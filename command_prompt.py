@@ -8,7 +8,7 @@ while True:
     sys.stdout.write(colorama.Fore.LIGHTGREEN_EX)
     sys.stdout.flush()
 
-    sys.stdout.write(requests.get("https://website url here/user").text + "@ssh")
+    sys.stdout.write(requests.get("https://sshshell.otiopo.repl.co/user").text + "@ssh")
     sys.stdout.flush()
 
     sys.stdout.write(colorama.Style.RESET_ALL)
@@ -20,14 +20,17 @@ while True:
     sys.stdout.write(colorama.Fore.BLUE)
     sys.stdout.flush()
 
-    sys.stdout.write(requests.get("https://website url here/cwd").text)
+    sys.stdout.write(requests.get("https://sshshell.otiopo.repl.co/cwd").text)
     sys.stdout.flush()
 
     sys.stdout.write(colorama.Style.RESET_ALL)
 
     command = input("$ ")
 
-    response = requests.post("https://website url here/sendCommand?command=" + command)
+    if command == "exit":
+        break
+
+    response = requests.post("https://sshshell.otiopo.repl.co/sendCommand?command=" + command)
 
     if response.status_code != 200:
         print(colorama.Fore.RED + "Error")
