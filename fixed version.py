@@ -1,13 +1,16 @@
-import requests, colorama, sys
+import requests, colorama
 
 colorama.init()
 
 while True:
     colorama.reinit()
 
-    command = input(colorama.Fore.LIGHTGREEN_EX + requests.get("https://website url here/user").text + "@ssh" + colorama.Style.RESET_ALL + ":" + colorama.Fore.BLUE + requests.get("https://website url here/cwd").text + colorama.Style.RESET_ALL + "$ ")
+    command = input(colorama.Fore.LIGHTGREEN_EX + requests.get("https://sshshell.otiopo.repl.co/user").text + "@ssh" + colorama.Style.RESET_ALL + ":" + colorama.Fore.BLUE + requests.get("https://sshshell.otiopo.repl.co/cwd").text + colorama.Style.RESET_ALL + "$ ")
+    
+    if command == "exit":
+        break
 
-    response = requests.post("https://website url here/sendCommand?command=" + command)
+    response = requests.post("https://sshshell.otiopo.repl.co/sendCommand?command=" + command)
 
     if response.status_code != 200:
         print(colorama.Fore.RED + "Error")
